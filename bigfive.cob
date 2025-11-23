@@ -207,7 +207,7 @@
       *         DISPLAY ' '
       *         DISPLAY SEQNO  ' ' BF-QUESTION (BFX)
       *         DISPLAY CHOICES
-      *         DISPLAY 'Select the answer that bests applies to you' 
+      *         DISPLAY 'Select the answer that best applies to you' 
                 PERFORM GET-NEXT-RAND
       *          DISPLAY ANS
                  MOVE ANS TO ANS-VALUE (BFX)

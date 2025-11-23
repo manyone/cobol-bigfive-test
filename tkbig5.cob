@@ -246,7 +246,7 @@
                DISPLAY ' '.
                DISPLAY SEQNO  ' ' BF-QUESTION (BFX).
                DISPLAY CHOICES.
-               DISPLAY 'Select the answer that bests applies to you'.
+               DISPLAY 'Select the answer that best applies to you'.
                ACCEPT ANS-X.
 
        COMPUTE-SCORES.
