@@ -157,7 +157,7 @@ exploration with enthusiasm.
 
 ### Step 1: Compile the Program
 ```bash
-cobc -c bigfive.cob
+cobc -x bigfive.cob
 ```
 
 ### Step 2: Copy desired file to designated input
@@ -236,6 +236,7 @@ Feel free to adapt, share, or deploy it on your own MVS system.
 
 —  
 *Developed with care (and a lot of `DISPLAY` statements) by [manyone](https://github.com/manyone)*
+
 
 
 
