@@ -19,6 +19,8 @@ This isn’t just a toy—it’s a faithful adaptation of a validated psychologi
   - [⚙️ How It Works](#️-how-it-works)
     - [Scoring Logic](#scoring-logic)
     - [Interpretation Tiers](#interpretation-tiers)
+    - [Sample Session](#sample-session)
+    - [Sample Interpretation](#sample-interpretation)
   - [🚀 Running in TK4-!](#-running-in-tk4-)
   - [🧪 Testing & Development](#-testing--development)
   - [💡 Why COBOL?](#-why-cobol)
