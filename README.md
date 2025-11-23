@@ -133,6 +133,24 @@ Agreeableness measures your tendency to be compassionate and cooperative rather
 than suspicious and antagonistic toward others.
 You balance cooperation with healthy boundaries, being generally trusting while
 asserting your needs appropriately.
+
+CONSCIENTIOUSNESS     60.0%
+Conscientiousness measures your tendency to be organized, responsible, and
+self-disciplined.
+You demonstrate reliable goal-directed behavior with flexible tendencies,
+balancing structure with adaptability.
+
+EMOTIONAL STABILITY   75.0%
+Emotional Stability measures your capacity to remain calm, composed, and
+resilient in the face of stress and adversity.
+You remain calm, composed, and resilient under pressure, maintaining emotional
+equilibrium even during challenging situations.
+
+INTELLECT             85.0%
+Openness measures your appreciation for art, emotion, adventure, imagination,
+curiosity, and variety of experiences.
+You embrace unconventional ideas, creative pursuits, and intellectual
+exploration with enthusiasm.
 ```	
 ---
 ## 🚀 Running in PC (GnuCobol)
