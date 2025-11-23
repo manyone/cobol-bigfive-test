@@ -113,7 +113,7 @@ For each statement choose the response that best represents your opinion:
 
  1. I am the life of the party.
 1=Very Inaccurate  2=Inaccurate  3=Neutral  4=Accurate  5=Very Accurate
-Select the answer that bests applies to you
+Select the answer that best applies to you
 2
 
  2. I sympathize with others' feelings.
@@ -236,6 +236,7 @@ Feel free to adapt, share, or deploy it on your own MVS system.
 
 —  
 *Developed with care (and a lot of `DISPLAY` statements) by [manyone](https://github.com/manyone)*
+
 
 
 
