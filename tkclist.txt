@@ -1,0 +1,6 @@
+PROC 1 SIZE                                                             00000101
+ALLOC FILE(STMTS) DA('HERC02.BF.&SIZE..DAT') SHR                        00000201
+ALLOC FILE(TRAITS) DA('HERC02.BF.TRAITS.DAT') SHR                       00000300
+ALLOC FILE(SYSOUT) DA(*)                                                00000400
+ALLOC FILE(SYSIN) DA(*)                                                 00000500
+CALL 'HERC02.RUN.LOAD(BIGFIVE)'                                         00000600

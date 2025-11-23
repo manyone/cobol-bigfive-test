@@ -1,0 +1,20 @@
+10Extraversion measures your sociability, assertiveness, and tendency to seek stimulation in social settings. 
+11You prefer solitude and quiet activities, finding social interactions draining and preferring independent pursuits. 
+12You engage socially with moderate enthusiasm, enjoying group activities while valuing personal downtime. 
+13You thrive in social environments, radiating positive energy and enthusiasm while seeking social stimulation.
+20Agreeableness measures your tendency to be compassionate and cooperative rather than suspicious and antagonistic toward others. 
+21You are competitive and skeptical, prioritizing personal interests over cooperation and maintaining emotional distance. 
+22You balance cooperation with healthy boundaries, being generally trusting while asserting your needs appropriately. 
+23You demonstrate exceptional compassion, empathy, and altruism, prioritizing the needs of others harmoniously.
+30Conscientiousness measures your tendency to be organized, responsible, and self-disciplined. 
+31You are spontaneous and disorganized, with difficulty following through on commitments and maintaining order. 
+32You demonstrate reliable goal-directed behavior with flexible tendencies, balancing structure with adaptability. 
+33You exhibit exceptional discipline, meticulous attention to detail, and strong achievement orientation.
+40Emotional Stability measures your capacity to remain calm, composed, and resilient in the face of stress and adversity. 
+41You are sensitive to stress and may experience frequent mood changes, reacting strongly to emotional challenges. 
+42You generally maintain emotional balance with occasional stress responses, demonstrating normal coping mechanisms. 
+43You remain calm, composed, and resilient under pressure, maintaining emotional equilibrium even during challenging situations.
+50Openness measures your appreciation for art, emotion, adventure, imagination, curiosity, and variety of experiences. 
+51You prefer routine and familiar experiences, avoiding novel situations or unconventional thinking. 
+52You balance openness with practicality, enjoying new ideas while maintaining grounded perspectives. 
+53You embrace unconventional ideas, creative pursuits, and intellectual exploration with enthusiasm.
