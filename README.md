@@ -15,6 +15,7 @@ This isn’t just a toy—it’s a faithful adaptation of a validated psychologi
 - [🧠 Big Five Personality Test in COBOL](#-big-five-personality-test-in-cobol)
   - [📖 Table of Contents](#-table-of-contents)
   - [✨ Overview](#-overview)
+  - [🖥️ Web Version (Interface Comparison)](#web-version-interface-comparison)
   - [📦 Files Included](#-files-included)
   - [⚙️ How It Works](#️-how-it-works)
     - [Scoring Logic](#scoring-logic)
@@ -46,6 +47,16 @@ Originally built with 50 questions, the **20-item version** (`big5sml.*`) was ad
 
 ---
 
+## 🖥️ Web Version (Interface Comparison)
+
+For a modern interface comparison, I created a [web-based version](https://manyone.github.io/cobol-bigfive-test/webapp/) using HTML/CSS/JavaScript. It's interesting to see how user interaction has evolved from terminal-based applications to graphical web interfaces, while maintaining the same core assessment logic.
+
+**COBOL Version**: Terminal-based, character UI, runs on mainframes  
+**Web Version**: Graphical, point-and-click, runs in browsers
+
+Both provide interactive experiences, but showcase different eras of human-computer interaction.
+
+---
 ## 📦 Files Included
 
 | File               | Purpose |
@@ -157,7 +168,7 @@ exploration with enthusiasm.
 
 ### Step 1: Compile the Program
 ```bash
-cobc -x bigfive.cob
+cobc -c bigfive.cob
 ```
 
 ### Step 2: Copy desired file to designated input
@@ -236,8 +247,6 @@ Feel free to adapt, share, or deploy it on your own MVS system.
 
 —  
 *Developed with care (and a lot of `DISPLAY` statements) by [manyone](https://github.com/manyone)*
-
-
 
 
 
