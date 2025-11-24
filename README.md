@@ -15,7 +15,7 @@ This isn’t just a toy—it’s a faithful adaptation of a validated psychologi
 - [🧠 Big Five Personality Test in COBOL](#-big-five-personality-test-in-cobol)
   - [📖 Table of Contents](#-table-of-contents)
   - [✨ Overview](#-overview)
-  - [🖥️ Web Version](#-web-version)
+  - [🖥️ Web Version](🖥️-web-version)
   - [📦 Files Included](#-files-included)
   - [⚙️ How It Works](#️-how-it-works)
     - [Scoring Logic](#scoring-logic)
@@ -247,6 +247,7 @@ Feel free to adapt, share, or deploy it on your own MVS system.
 
 —  
 *Developed with care (and a lot of `DISPLAY` statements) by [manyone](https://github.com/manyone)*
+
 
 
 
