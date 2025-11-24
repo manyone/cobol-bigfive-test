@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Five Personality Test</title>
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #6b8cbc;
+            --accent-color: #ff7e5f;
+            --light-color: #f5f7fa;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: var(--transition);
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            border: 1px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            background-color: #eaeaea;
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+        }
+
+        .btn-accent:hover {
+            background-color: #ff9a7a;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .inventory-selection {
+            text-align: center;
+        }
+
+        .inventory-selection h2 {
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .question-container {
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .rating-options {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .rating-option {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 0 5px;
+        }
+
+        .rating-option:hover {
+            background-color: #f0f0f0;
+        }
+
+        .rating-option.selected {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .rating-label {
+            display: block;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .progress-container {
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .results-container {
+            margin-top: 20px;
+        }
+
+        .trait-result {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            background-color: #f9f9f9;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .trait-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .trait-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .trait-score {
+            font-size: 16px;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background-color: var(--light-color);
+        }
+
+        .trait-definition {
+            font-style: italic;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .trait-interpretation {
+            padding: 10px;
+            border-radius: var(--border-radius);
+            background-color: white;
+        }
+
+        .low-score {
+            border-left-color: var(--danger-color);
+        }
+
+        .average-score {
+            border-left-color: var(--warning-color);
+        }
+
+        .high-score {
+            border-left-color: var(--success-color);
+        }
+
+        .score-low {
+            color: var(--danger-color);
+        }
+
+        .score-average {
+            color: var(--warning-color);
+        }
+
+        .score-high {
+            color: var(--success-color);
+        }
+
+        .completion-message {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-radius: var(--border-radius);
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Big Five Personality Test</h1>
+        <p>Discover your personality traits based on the scientifically validated Big Five model</p>
+    </header>
+
+    <div class="container inventory-selection" id="inventory-selection">
+        <h2>Choose Your Test Length</h2>
+        <p>Select the inventory size that fits your available time:</p>
+        <div style="margin: 30px 0;">
+            <button class="btn btn-accent" id="small-inventory">Small (20 questions)</button>
+            <button class="btn btn-accent" id="medium-inventory">Medium (50 questions)</button>
+        </div>
+        <p><small>The small inventory provides a quick assessment, while the medium inventory offers more detailed results.</small></p>
+    </div>
+
+    <div class="container hidden" id="test-container">
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-text" id="progress-text">Question 1 of 20</div>
+        </div>
+
+        <div class="question-container">
+            <div class="question" id="question-text">I am the life of the party.</div>
+            <div class="rating-options">
+                <div class="rating-option" data-value="1">
+                    <span>1</span>
+                    <span class="rating-label">Strongly Disagree</span>
+                </div>
+                <div class="rating-option" data-value="2">
+                    <span>2</span>
+                    <span class="rating-label">Disagree</span>
+                </div>
+                <div class="rating-option" data-value="3">
+                    <span>3</span>
+                    <span class="rating-label">Neutral</span>
+                </div>
+                <div class="rating-option" data-value="4">
+                    <span>4</span>
+                    <span class="rating-label">Agree</span>
+                </div>
+                <div class="rating-option" data-value="5">
+                    <span>5</span>
+                    <span class="rating-label">Strongly Agree</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button class="btn btn-secondary" id="prev-btn" disabled>Previous</button>
+            <button class="btn" id="next-btn">Next</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="results-container">
+        <div class="completion-message">
+            <h2>Test Complete!</h2>
+            <p>Your personality assessment is ready. Below you'll find your results for each of the Big Five personality traits.</p>
+        </div>
+        
+        <div class="results-container" id="results-list">
+            <!-- Results will be inserted here by JavaScript -->
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="btn btn-accent" id="restart-btn">Take Test Again</button>
+        </div>
+    </div>
+
+    <script>
+        // JSON data for the test
+        const testData = {
+            "inventory": {
+                "small": [
+                    {"trait_id": "1", "rev_ind": " ", "statement": "I am the life of the party."},
+                    {"trait_id": "2", "rev_ind": " ", "statement": "I sympathize with others' feelings."},
+                    {"trait_id": "3", "rev_ind": " ", "statement": "I get chores done right away."},
+                    {"trait_id": "4", "rev_ind": " ", "statement": "I have frequent mood swings."},
+                    {"trait_id": "5", "rev_ind": " ", "statement": "I have a vivid imagination."},
+                    {"trait_id": "1", "rev_ind": "-", "statement": "I don't talk a lot."},
+                    {"trait_id": "2", "rev_ind": "-", "statement": "I am not interested in other people's problems."},
+                    {"trait_id": "3", "rev_ind": "-", "statement": "I often forget to put things back in their proper place."},
+                    {"trait_id": "4", "rev_ind": "-", "statement": "I am relaxed most of the time."},
+                    {"trait_id": "5", "rev_ind": "-", "statement": "I am not interested in abstract ideas."},
+                    {"trait_id": "1", "rev_ind": " ", "statement": "I talk to a lot of different people at parties."},
+                    {"trait_id": "2", "rev_ind": " ", "statement": "I feel others' emotions."},
+                    {"trait_id": "3", "rev_ind": " ", "statement": "I like order."},
+                    {"trait_id": "4", "rev_ind": " ", "statement": "I get upset easily."},
+                    {"trait_id": "5", "rev_ind": "-", "statement": "I have difficulty understanding abstract ideas."},
+                    {"trait_id": "1", "rev_ind": "-", "statement": "I keep in the background."},
+                    {"trait_id": "2", "rev_ind": "-", "statement": "I am not really interested in others."},
+                    {"trait_id": "3", "rev_ind": "-", "statement": "I make a mess of things."},
+                    {"trait_id": "4", "rev_ind": "-", "statement": "I seldom feel blue."},
+                    {"trait_id": "5", "rev_ind": "-", "statement": "I do not have a good imagination."}
+                ],
+                "medium": [
+                    {"trait_id": "1", "rev_ind": " ", "statement": "I am the life of the party."},
+                    {"trait_id": "2", "rev_ind": "-", "statement": "I feel little concern for others."},
+                    {"trait_id": "3", "rev_ind": " ", "statement": "I am always prepared."},
+                    {"trait_id": "4", "rev_ind": "-", "statement": "I get stressed out easily."},
+                    {"trait_id": "5", "rev_ind": " ", "statement": "I have a rich vocabulary."},
+                    {"trait_id": "1", "rev_ind": "-", "statement": "I don't talk a lot."},
+                    {"trait_id": "2", "rev_ind": " ", "statement": "I am interested in people."},
+                    {"trait_id": "3", "rev_ind": "-", "statement": "I leave my belongings around."},
+                    {"trait_id": "4", "rev_ind": " ", "statement": "I am relaxed most of the time."},
+                    {"trait_id": "5", "rev_ind": "-", "statement": "I have difficulty understanding abstract ideas."},
+                    {"trait_id": "1", "rev_ind": " ", "statement": "I feel comfortable around people."},
+                    {"trait_id": "2", "rev_ind": "-", "statement": "I insult people."},
+                    {"trait_id": "3", "rev_ind": " ", "statement": "I pay attention to details."},
+                    {"trait_id": "4", "rev_ind": "-", "statement": "I worry about things."},
+                    {"trait_id": "5", "rev_ind": " ", "statement": "I have a vivid imagination."},
+                    {"trait_id": "1", "rev_ind": "-", "statement": "I keep in the background."},
+                    {"trait_id": "2", "rev_ind": " ", "statement": "I sympathize with others' feelings."},
+                    {"trait_id": "3", "rev_ind": "-", "statement": "I make a mess of things."},
+                    {"trait_id": "4", "rev_ind": " ", "statement": "I seldom feel blue."},
+                    {"trait_id": "5", "rev_ind": "-", "statement": "I am not interested in abstract ideas."},
+                    {"trait_id": "1", "rev_ind": " ", "statement": "I start conversations."},
+                    {"trait_id": "2", "rev_ind": "-", "statement": "I am not interested in other people's problems."},
+                    {"trait_id": "3", "rev_ind": " ", "statement": "I get chores done right away."},
+                    {"trait_id": "4", "rev_ind": "-", "statement": "I am easily disturbed."},
+                    {"trait_id": "5", "rev_ind": " ", "statement": "I have excellent ideas."},
+                    {"trait_id": "1", "rev_ind": "-", "statement": "I have little to say."},
+                    {"trait_id": "2", "rev_ind": " ", "statement": "I have a soft heart."},
+                    {"trait_id": "3", "rev_ind": "-", "statement": "I often forget to put things back in their proper place."},
+                    {"trait_id": "4", "rev_ind": "-", "statement": "I get upset easily."},
+                    {"trait_id": "5", "rev_ind": "-", "statement": "I do not have a good imagination."},
+                    {"trait_id": "1", "rev_ind": " ", "statement": "I talk to a lot of different people at parties."},
+                    {"trait_id": "2", "rev_ind": "-", "statement": "I am not really interested in others."},
+                    {"trait_id": "3", "rev_ind": " ", "statement": "I like order."},
+                    {"trait_id": "4", "rev_ind": "-", "statement": "I change my mood a lot."},
+                    {"trait_id": "5", "rev_ind": " ", "statement": "I am quick to understand things."},
+                    {"trait_id": "1", "rev_ind": "-", "statement": "I don't like to draw attention to myself."},
+                    {"trait_id": "2", "rev_ind": " ", "statement": "I take time out for others."},
+                    {"trait_id": "3", "rev_ind": "-", "statement": "I shirk my duties."},
+                    {"trait_id": "4", "rev_ind": "-", "statement": "I have frequent mood swings."},
+                    {"trait_id": "5", "rev_ind": " ", "statement": "I use difficult words."},
+                    {"trait_id": "1", "rev_ind": " ", "statement": "I don't mind being the center of attention."},
+                    {"trait_id": "2", "rev_ind": " ", "statement": "I feel others' emotions."},
+                    {"trait_id": "3", "rev_ind": " ", "statement": "I follow a schedule."},
+                    {"trait_id": "4", "rev_ind": "-", "statement": "I get irritated easily."},
+                    {"trait_id": "5", "rev_ind": " ", "statement": "I spend time reflecting on things."},
+                    {"trait_id": "1", "rev_ind": "-", "statement": "I am quiet around strangers."},
+                    {"trait_id": "2", "rev_ind": " ", "statement": "I make people feel at ease."},
+                    {"trait_id": "3", "rev_ind": " ", "statement": "I am exacting in my work."},
+                    {"trait_id": "4", "rev_ind": "-", "statement": "I often feel blue."},
+                    {"trait_id": "5", "rev_ind": " ", "statement": "I am full of ideas."}
+                ]
+            },
+            "traits": {
+                "1": {
+                    "title": "Extroversion",
+                    "definition": "Extraversion measures your sociability, assertiveness, and tendency to seek stimulation in social settings.",
+                    "interpretations": {
+                        "low": "You prefer solitude and quiet activities, finding social interactions draining and preferring independent pursuits.",
+                        "average": "You engage socially with moderate enthusiasm, enjoying group activities while valuing personal downtime.",
+                        "high": "You thrive in social environments, radiating positive energy and enthusiasm while seeking social stimulation."
+                    }
+                },
+                "2": {
+                    "title": "Agreeableness",
+                    "definition": "Agreeableness measures your tendency to be compassionate and cooperative rather than suspicious and antagonistic toward others.",
+                    "interpretations": {
+                        "low": "You are competitive and skeptical, prioritizing personal interests over cooperation and maintaining emotional distance.",
+                        "average": "You balance cooperation with healthy boundaries, being generally trusting while asserting your needs appropriately.",
+                        "high": "You demonstrate exceptional compassion, empathy, and altruism, prioritizing the needs of others harmoniously."
+                    }
+                },
+                "3": {
+                    "title": "Conscientiousness",
+                    "definition": "Conscientiousness measures your tendency to be organized, responsible, and self-disciplined.",
+                    "interpretations": {
+                        "low": "You are spontaneous and disorganized, with difficulty following through on commitments and maintaining order.",
+                        "average": "You demonstrate reliable goal-directed behavior with flexible tendencies, balancing structure with adaptability.",
+                        "high": "You exhibit exceptional discipline, meticulous attention to detail, and strong achievement orientation."
+                    }
+                },
+                "4": {
+                    "title": "Emotional Stability",
+                    "definition": "Emotional Stability measures your capacity to remain calm, composed, and resilient in the face of stress and adversity.",
+                    "interpretations": {
+                        "low": "You are sensitive to stress and may experience frequent mood changes, reacting strongly to emotional challenges.",
+                        "average": "You generally maintain emotional balance with occasional stress responses, demonstrating normal coping mechanisms.",
+                        "high": "You remain calm, composed, and resilient under pressure, maintaining emotional equilibrium even during challenging situations."
+                    }
+                },
+                "5": {
+                    "title": "Openness",
+                    "definition": "Openness measures your appreciation for art, emotion, adventure, imagination, curiosity, and variety of experiences.",
+                    "interpretations": {
+                        "low": "You prefer routine and familiar experiences, avoiding novel situations or unconventional thinking.",
+                        "average": "You balance openness with practicality, enjoying new ideas while maintaining grounded perspectives.",
+                        "high": "You embrace unconventional ideas, creative pursuits, and intellectual exploration with enthusiasm."
+                    }
+                }
+            }
+        };
+
+        // Application state
+        let currentInventory = [];
+        let currentQuestionIndex = 0;
+        let answers = []; // Array to store raw answers (1-5)
+        let inventorySize = 0; // Will be set dynamically based on selection
+
+        // DOM elements
+        const inventorySelection = document.getElementById('inventory-selection');
+        const testContainer = document.getElementById('test-container');
+        const resultsContainer = document.getElementById('results-container');
+        const questionText = document.getElementById('question-text');
+        const progressFill = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-text');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const ratingOptions = document.querySelectorAll('.rating-option');
+        const resultsList = document.getElementById('results-list');
+        const smallInventoryBtn = document.getElementById('small-inventory');
+        const mediumInventoryBtn = document.getElementById('medium-inventory');
+        const restartBtn = document.getElementById('restart-btn');
+
+        // Event listeners
+        smallInventoryBtn.addEventListener('click', () => startTest('small'));
+        mediumInventoryBtn.addEventListener('click', () => startTest('medium'));
+        prevBtn.addEventListener('click', goToPreviousQuestion);
+        nextBtn.addEventListener('click', goToNextQuestion);
+        restartBtn.addEventListener('click', restartTest);
+
+        // Add event listeners to rating options
+        ratingOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove selected class from all options
+                ratingOptions.forEach(opt => opt.classList.remove('selected'));
+                // Add selected class to clicked option
+                option.classList.add('selected');
+                
+                // Enable next button
+                nextBtn.disabled = false;
+            });
+        });
+
+        // Functions
+        function startTest(inventoryType) {
+            currentInventory = testData.inventory[inventoryType];
+            inventorySize = currentInventory.length;
+            currentQuestionIndex = 0;
+            
+            // Initialize answers array with null values for the selected inventory size
+            answers = new Array(inventorySize).fill(null);
+            
+            // Hide inventory selection and show test container
+            inventorySelection.classList.add('hidden');
+            testContainer.classList.remove('hidden');
+            
+            // Update button text to reflect inventory size
+            smallInventoryBtn.textContent = `Small (${testData.inventory.small.length} questions)`;
+            mediumInventoryBtn.textContent = `Medium (${testData.inventory.medium.length} questions)`;
+            
+            // Load first question
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const question = currentInventory[currentQuestionIndex];
+            questionText.textContent = question.statement;
+            
+            // Update progress - dynamically uses inventorySize
+            const progress = ((currentQuestionIndex + 1) / inventorySize) * 100;
+            progressFill.style.width = `${progress}%`;
+            progressText.textContent = `Question ${currentQuestionIndex + 1} of ${inventorySize}`;
+            
+            // Clear selected rating
+            ratingOptions.forEach(opt => opt.classList.remove('selected'));
+            
+            // Check if we already have an answer for this question
+            if (answers[currentQuestionIndex] !== null) {
+                const selectedValue = answers[currentQuestionIndex];
+                ratingOptions.forEach(opt => {
+                    if (parseInt(opt.getAttribute('data-value')) === selectedValue) {
+                        opt.classList.add('selected');
+                    }
+                });
+            }
+            
+            // Update button states
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.disabled = answers[currentQuestionIndex] === null;
+            
+            // Change next button text if it's the last question
+            nextBtn.textContent = currentQuestionIndex === inventorySize - 1 ? 'Finish' : 'Next';
+        }
+
+        function goToPreviousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function goToNextQuestion() {
+            // Save current answer
+            const selectedOption = document.querySelector('.rating-option.selected');
+            if (selectedOption) {
+                const value = parseInt(selectedOption.getAttribute('data-value'));
+                answers[currentQuestionIndex] = value;
+            }
+            
+            // Check if we're at the last question
+            if (currentQuestionIndex === inventorySize - 1) {
+                showResults();
+                return;
+            }
+            
+            // Move to next question
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        function calculateTraitScores() {
+            const traitScores = {
+                "1": 0,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0
+            };
+            
+            // Calculate scores in one pass at the end
+            currentInventory.forEach((question, index) => {
+                const rawScore = answers[index];
+                if (rawScore === null) return; // Skip unanswered questions
+                
+                let finalScore = rawScore;
+                
+                // Apply reverse scoring if needed
+                if (question.rev_ind === "-") {
+                    finalScore = 6 - rawScore;
+                }
+                
+                // Add to trait score
+                traitScores[question.trait_id] += finalScore;
+            });
+            
+            return traitScores;
+        }
+
+        function showResults() {
+            // Hide test container and show results
+            testContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            
+            // Calculate all scores at once
+            const traitScores = calculateTraitScores();
+            
+            // Calculate percentage scores and interpretations
+            const results = calculateResults(traitScores);
+            
+            // Display results
+            displayResults(results);
+        }
+
+        function calculateResults(traitScores) {
+            const results = {};
+            
+            // Calculate max possible scores for each trait
+            const maxScores = {
+                "1": 0,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0
+            };
+            
+            // Count questions for each trait and calculate max scores
+            currentInventory.forEach(question => {
+                maxScores[question.trait_id] += 5;
+            });
+            
+            // Calculate percentage and interpretation for each trait
+            Object.keys(traitScores).forEach(traitId => {
+                const score = traitScores[traitId];
+                const maxScore = maxScores[traitId];
+                const percentage = maxScore > 0 ? (score / maxScore) * 100 : 0;
+                
+                let level;
+                if (percentage < 34) {
+                    level = 'low';
+                } else if (percentage > 66) {
+                    level = 'high';
+                } else {
+                    level = 'average';
+                }
+                
+                results[traitId] = {
+                    title: testData.traits[traitId].title,
+                    definition: testData.traits[traitId].definition,
+                    score: score,
+                    maxScore: maxScore,
+                    percentage: percentage.toFixed(1),
+                    level: level,
+                    interpretation: testData.traits[traitId].interpretations[level]
+                };
+            });
+            
+            return results;
+        }
+
+        function displayResults(results) {
+            resultsList.innerHTML = '';
+            
+            // Create result elements for each trait
+            Object.keys(results).forEach(traitId => {
+                const result = results[traitId];
+                
+                const resultElement = document.createElement('div');
+                resultElement.className = `trait-result ${result.level}-score`;
+                
+                resultElement.innerHTML = `
+                    <div class="trait-header">
+                        <div class="trait-title">${result.title}</div>
+                        <div class="trait-score score-${result.level}">${result.percentage}% (${result.level})</div>
+                    </div>
+                    <div class="trait-definition">${result.definition}</div>
+                    <div class="trait-interpretation">${result.interpretation}</div>
+                `;
+                
+                resultsList.appendChild(resultElement);
+            });
+        }
+
+        function restartTest() {
+            // Hide results and show inventory selection
+            resultsContainer.classList.add('hidden');
+            inventorySelection.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
