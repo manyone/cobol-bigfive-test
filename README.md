@@ -35,7 +35,7 @@ This isn’t just a toy—it’s a faithful adaptation of a validated psychologi
 
 This program administers a short-form **Big Five personality inventory** (20 or 50 items), scores your responses, and provides a personalized narrative interpretation for each of the five core traits:
 
-1. **Extroversion**  
+1. **Extraversion**  
 2. **Agreeableness**  
 3. **Conscientiousness**  
 4. **Emotional Stability** *(aka low Neuroticism)*  
@@ -105,7 +105,7 @@ Based on the percentage score:
 The program then looks up the corresponding narrative in `big5defs.dat`:
 
 ```
-10Extroversion measures your sociability...
+10Extraversion measures your sociability...
 11You prefer solitude...                 ← Low (1)
 12You engage socially with moderate...   ← Average (2)
 13You thrive in social environments...   ← High (3)
@@ -133,8 +133,8 @@ Select the answer that best applies to you
 ```
 ### Sample Interpretation
 ```
-EXTROVERSION          45.0%
-Extroversion measures your sociability, assertiveness, and tendency to seek
+EXTRAVERSION          45.0%
+Extraversion measures your sociability, assertiveness, and tendency to seek
 stimulation in social settings.
 You engage socially with moderate enthusiasm, enjoying group activities while
 valuing personal downtime.
@@ -247,6 +247,7 @@ Feel free to adapt, share, or deploy it on your own MVS system.
 
 —  
 *Developed with care (and a lot of `DISPLAY` statements) by [manyone](https://github.com/manyone)*
+
 
 
 
